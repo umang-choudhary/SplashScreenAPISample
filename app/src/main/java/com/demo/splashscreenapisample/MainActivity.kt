@@ -4,13 +4,11 @@ import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
 import android.view.ViewTreeObserver
-import android.view.animation.BounceInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
-import com.example.splashscreenapisample.MainViewModel
 
 class MainActivity : AppCompatActivity() {
 

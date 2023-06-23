@@ -1,4 +1,4 @@
-package com.example.splashscreenapisample
+package com.demo.splashscreenapisample
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
