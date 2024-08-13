@@ -2,8 +2,10 @@ package com.demo.splashscreenapisample
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import android.view.animation.BounceInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen
@@ -17,6 +19,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val info = savedInstanceState?.getString("Info")
+        Log.d("SplashScreenAPITest", "---onCreate---$info")
+
         splashScreen = installSplashScreen()
         setContentView(R.layout.activity_main)
 
@@ -26,10 +32,17 @@ class MainActivity : AppCompatActivity() {
         useCustomExitAnimation()
 
         // 2. Uncomment the line below if you want to keep splash screen on-screen for longer period.
-        keepSplashScreenFor5Seconds()
+        keepSplashScreenForLongerTime()
 
         // 3. Uncomment the line below if you want to keep splash screen on-screen indefinitely.
         //keepSplashScreenIndefinitely()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("Info", "My Secret Info")
+        super.onSaveInstanceState(outState)
+
+        Log.d("SplashScreenAPITest", "---onSaveInstanceState---")
     }
 
     /**
@@ -78,12 +91,12 @@ class MainActivity : AppCompatActivity() {
      * Keep splash screen on-screen for longer period. This is useful if you need to load data when
      * splash screen is appearing.
      */
-    private fun keepSplashScreenFor5Seconds() {
+    private fun keepSplashScreenForLongerTime() {
         val content = findViewById<View>(android.R.id.content)
 
         /*content.viewTreeObserver.addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
             override fun onPreDraw(): Boolean {
-                Thread.sleep(5000)
+                Thread.sleep(10000)
                 content.viewTreeObserver.removeOnPreDrawListener(this)
                 return true
             }
