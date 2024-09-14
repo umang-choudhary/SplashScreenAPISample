@@ -11,6 +11,9 @@ import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +39,10 @@ class MainActivity : AppCompatActivity() {
 
         // 3. Uncomment the line below if you want to keep splash screen on-screen indefinitely.
         //keepSplashScreenIndefinitely()
+
+        lifecycleScope.launch(Dispatchers.IO) {
+
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
